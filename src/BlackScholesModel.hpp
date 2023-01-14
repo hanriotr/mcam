@@ -12,8 +12,10 @@ public:
     double r_; /// taux d'intérêt
     double rho_; /// paramètre de corrélation
     PnlVect *sigma_; /// vecteur de volatilités
-    PnlVect *divid; /// vecteur des dividendes
+    PnlVect *divid_; /// vecteur des dividendes
     PnlVect *spot_; /// valeurs initiales des sous-jacents
+    BlackScholesModel(int size, double r, double rho, PnlVect* sigma, PnlVect* divid, PnlVect* spot);
+    PnlMat *L_; // Matrice racine carré de la corrélation
 
     /**
      * Génère une trajectoire du modèle et la stocke dans path
@@ -25,4 +27,13 @@ public:
      */
     void asset(PnlMat *path, double T, int dates, PnlRng *rng);
 
+    /**
+     * Génère une trajectoire du modèle et la stocke dans vect
+     *
+     * @param[out] path contient une trajectoire du modèle.
+     * C'est un vecteur de taille nbTimeSteps+1
+     * @param[in] T  maturité
+     * @param[in] nbTimeSteps nombre de dates de constatation
+     */
+    void assetVect(PnlVect *vect, int j, double T, int dates, PnlRng *rng);
 };

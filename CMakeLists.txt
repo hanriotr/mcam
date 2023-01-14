@@ -50,6 +50,9 @@ target_link_libraries(test-parser jl_parser ${LIBS})
 add_executable(mc-example src/mc_example.cpp src/PricingResults.cpp)
 target_link_libraries(mc-example jl_parser ${LIBS})
 
+add_executable(test-bs-model src/test_bs_model.cpp src/BlackScholesModel.cpp)
+target_link_libraries(test-bs-model jl_parser ${LIBS})
+
 # Print compiler flags
 get_directory_property(DirDefs COMPILE_DEFINITIONS)
 message(STATUS "COMPILE_DEFINITIONS = ${DirDefs}")
