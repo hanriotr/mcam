@@ -2,6 +2,7 @@
 
 #include "pnl/pnl_vector.h"
 #include "pnl/pnl_matrix.h"
+#include <iostream>
 
 /// \brief Classe Option abstraite
 class Option
@@ -18,7 +19,7 @@ public:
      * par la fonction asset.
      * @return phi(trajectoire)
      */
-    virtual double payoff(const PnlMat *path) = 0;
+    virtual double payoff(const PnlMat *path, double t) = 0;
 };
 
 
